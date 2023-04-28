@@ -10,6 +10,7 @@ import {
   Button,
 } from '@mui/material';
 import Blogger from './Blogger';
+import { Link } from 'react-router-dom';
 
 function Tweets() {
   const [users, setUsers] = useState([]);
@@ -55,11 +56,13 @@ function Tweets() {
 
   return (
     <Container fixed>
-      <Box sx={{ my: 2 }}>
+      <Box sx={{ my: 2, display: 'flex', justifyContent: 'space-between' }}>
+        <Link to="/">
+          <Button variant="outlined">Home</Button>
+        </Link>
         <Select
           value={filter}
           onChange={event => setFilter(event.target.value)}
-          sx={{ mr: 2 }}
         >
           <MenuItem value="all">Show all</MenuItem>
           <MenuItem value="follow">Follow</MenuItem>
@@ -68,7 +71,7 @@ function Tweets() {
       </Box>
       <Grid container spacing={4}>
         {filteredUsers.map(user => (
-          <Grid item xs={12} sm={6} md={4} key={user.id}>
+          <Grid item xs={12} sm={6} md={4} key={user.id} sx={{ m: 0 }}>
             <Blogger user={user} />
           </Grid>
         ))}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Home from './Home';
 import Tweets from './Tweets';
@@ -8,7 +8,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/tweets/*" element={<Tweets />} />
-      <Route path="*" element={<NotFound />} />
+      {/* <Route path="*" element={<NotFound />} /> */}
     </Routes>
   );
 }
@@ -16,7 +16,7 @@ function App() {
 function NotFound() {
   const navigate = useNavigate();
 
-  React.useEffect(() => {
+  useEffect(() => {
     navigate('/', { replace: true });
   }, [navigate]);
 
