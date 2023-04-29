@@ -1,6 +1,13 @@
 const { createTheme } = require('@mui/material');
 
 export const theme = createTheme({
+  breakpoints: {
+    values: {
+      sm: 375,
+      md: 768,
+      lg: 1444,
+    },
+  },
   palette: {
     primary: {
       main: '#471CA9',
@@ -8,5 +15,9 @@ export const theme = createTheme({
     secondary: {
       main: '#5CD3A8',
     },
+  },
+  typography: {
+    fontFamily: 'Montserrat',
+    fontSize: 20,
   },
 });

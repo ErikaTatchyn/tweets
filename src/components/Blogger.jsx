@@ -9,8 +9,8 @@ import {
   Typography,
 } from '@mui/material';
 import { theme } from 'theme';
-import { ReactComponent as GoIT } from '../imgs/goit.jpg';
-import BgImg from '../imgs/bg.jpg';
+// import GoIT from '../imgs/goit.svg';
+import BgImg from '../imgs/bg.png';
 
 function Blogger({ user, following }) {
   const [isFollowing, setIsFollowing] = useState(
@@ -32,14 +32,13 @@ function Blogger({ user, following }) {
   return (
     <Card
       sx={{
-        maxWidth: 380,
+        width: 380,
         height: 460,
         m: 0,
-        p: 4,
         display: 'flex',
         alignItems: 'center',
         flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         borderRadius: '20px',
         backgroundColor: theme.palette.primary.main,
         color: theme.palette.common.white,
@@ -47,10 +46,9 @@ function Blogger({ user, following }) {
     >
       <CardMedia
         sx={{
-          borderBottom: '5px white',
           backgroundImage: `url(${BgImg})`,
-          height: 100,
-          width: 100,
+          height: 160,
+          width: 300,
         }}
         // src="../imgs/bg.jpg"
         title="chat"
@@ -58,29 +56,39 @@ function Blogger({ user, following }) {
         height="194"
       />
       {/* <GoIT /> */}
-      <CardContent>
+      <CardContent
+        sx={{
+          borderTop: '5px solid white',
+          pt: 7,
+          textAlign: 'center',
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
         <Avatar
           src={user.avatar}
           alt={user.user}
           sx={{
-            // boxShadow: 'inset 0px 4.39163px 3.29372px #FBF8FF',
+            position: 'absolute',
+            width: 80,
+            height: 80,
             border: '5px solid white',
           }}
         />
-        <Typography variant="h6">{user.user}</Typography>
-        <Typography variant="body1">Tweets: {user.followers}</Typography>
+        <Typography variant="button">Tweets: {user.followers}</Typography>{' '}
+        <Typography variant="button" color="white">
+          {followers.toLocaleString()} followers
+        </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions sx={{ flexDirection: 'column' }}>
         <Button
           variant="contained"
-          color={isFollowing ? 'secondary' : 'warning'}
+          color={isFollowing ? 'secondary' : 'info'}
           onClick={handleFollow}
         >
           {isFollowing ? 'Following' : 'Follow'}
         </Button>
-        <Typography variant="body2" color="white">
-          {followers.toLocaleString()} followers
-        </Typography>
       </CardActions>
     </Card>
   );
