@@ -4,14 +4,13 @@ import {
   Box,
   Button,
   Card,
-  CardActions,
   CardContent,
   CardMedia,
   Typography,
 } from '@mui/material';
-import { theme } from 'theme';
 import GoIT from '../imgs/goit.svg';
 import BgImg from '../imgs/bg.png';
+import { theme } from 'theme';
 
 function Blogger({ user, following }) {
   const [isFollowing, setIsFollowing] = useState(
@@ -33,7 +32,7 @@ function Blogger({ user, following }) {
   return (
     <Card
       sx={{
-        width: 380,
+        width: 360,
         height: 460,
         m: 0,
         display: 'flex',
@@ -51,8 +50,8 @@ function Blogger({ user, following }) {
           backgroundImage: `url(${BgImg})`,
           height: 160,
           width: 300,
+          mt: 3,
         }}
-        // src="../imgs/bg.jpg"
         title="chat"
         component="div"
         height="194"
@@ -71,8 +70,8 @@ function Blogger({ user, following }) {
         sx={{
           borderTop: '5px solid white',
           pt: 7,
-          mb: 0,
           textAlign: 'center',
+          alignItems: 'center',
           width: '100%',
           display: 'flex',
           flexDirection: 'column',
@@ -96,16 +95,20 @@ function Blogger({ user, following }) {
         <Typography variant="button" color="white">
           {followers.toLocaleString()} followers
         </Typography>
-      </CardContent>
-      <CardActions sx={{ flexDirection: 'column' }}>
         <Button
           variant="contained"
           color={isFollowing ? 'secondary' : 'info'}
           onClick={handleFollow}
+          sx={{
+            maxWidth: 196,
+            boxShadow: '0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25)',
+            borderRadius: '10px',
+            mt: 2,
+          }}
         >
           {isFollowing ? 'Following' : 'Follow'}
         </Button>
-      </CardActions>
+      </CardContent>
     </Card>
   );
 }

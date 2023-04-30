@@ -5,7 +5,7 @@ export const theme = createTheme({
     values: {
       sm: 375,
       md: 768,
-      lg: 1444,
+      lg: 1440,
     },
   },
   palette: {
@@ -14,6 +14,9 @@ export const theme = createTheme({
     },
     secondary: {
       main: '#5CD3A8',
+    },
+    info: {
+      main: '#EBD8FF',
     },
   },
   typography: {

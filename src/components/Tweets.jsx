@@ -55,7 +55,7 @@ function Tweets() {
         );
 
   return (
-    <Container maxWidth="lg" sx={{ m: 3 }}>
+    <Container maxWidth="lg" sx={{ m: { xs: 0, lg: 3 }, minWidth: 400, mt: 2 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
         <Link to="/">
           <Button variant="outlined">Home</Button>
@@ -63,13 +63,20 @@ function Tweets() {
         <Select
           value={filter}
           onChange={event => setFilter(event.target.value)}
+          sx={{ mr: { xs: 0, lg: 2 } }}
         >
           <MenuItem value="all">Show all</MenuItem>
           <MenuItem value="follow">Follow</MenuItem>
           <MenuItem value="following">Following</MenuItem>
         </Select>
       </Box>
-      <Grid container spacing={4} sx={{ m: 0 }}>
+      <Grid
+        container
+        rowSpacing={2}
+        justifyContent="center"
+        columnSpacing={{ xs: 0, sm: 2, md: 3 }}
+        sx={{ m: 0 }}
+      >
         {filteredUsers.map(user => (
           <Grid item xs={12} md={6} lg={4} key={user.id} sx={{ m: 0, p: 0 }}>
             <Blogger user={user} />
